@@ -1,0 +1,30 @@
+.MODEL SMALL
+.STACK 100H
+.DATA
+A DW 9
+B DW 7
+SUM DW ?
+.CODE
+MAIN PROC
+;initialize DS
+MOV AX, @DATA
+MOV DS, AX 
+
+MOV AX, A
+ADD AX, B
+MOV SUM, AX 
+AAA         
+;Adjust After Addition
+
+MOV BX, AX
+MOV DL, BH
+ADD DL, 48
+MOV AH, 2
+INT 21H
+MOV DL, BL
+ADD DL, 48
+MOV AH, 2
+INT 21H  
+
+MAIN ENDP
+END MAIN
